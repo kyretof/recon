@@ -1,36 +1,38 @@
 #!/bin/bash
 
 domain=$1
+url=$domain/recon
+a=$url/a.txt
 
 if [ ! -d "$domain" ]; then
 	mkdir $domain
 fi
 
-if [ ! -d "$domain/recon" ]; then
-	mkdir $domain/recon
+if [ ! -d "$url" ]; then
+	mkdir $url
 fi
 
 url=$domain/recon
 
 echo "[+]Harvesting subdomains with amass..."
-amass enum -d $domain max-dns-queries 100 >> $url/a.txt
-sort -u $url/a.txt >> $url/amass-final.txt
-rm $url/a.txt
+amass enum -d $domain max-dns-queries 100 >> $a
+sort -u $a >> $url/amass.txt
+rm $a
 
 echo "[+]Harvesting subdomains with assetfinder..."
-assetfinder --subs-only $domain >> $url/a.txt
-sort -u $url/a.txt >> $url/assetfinder-final.txt
-rm $url/a.txt
+assetfinder --subs-only $domain >> $a
+sort -u $a >> $url/assetfinder.txt
+rm $a
 
 echo "[+]Harvesting subdomains with subfinder..."
-subfinder -d $domain >> $url/a.txt
-sort -u $url/a.txt >> $url/subfinder-final.txt
-rm $url/a.txt
+subfinder -d $domain >> $a
+sort -u $a >> $url/subfinder.txt
+rm $a
 
 echo "[+]Harvesting subdomains with waybackurls..."
-echo $domain | waybackurls >> $url/a.txt
-sort -u $url/a.txt >> $url/waybackurls.txt
-rm $url/a.txt
+echo $domain | waybackurls >> $a
+sort -u $a >> $url/waybackurls.txt
+rm $a
 
 echo "[+]Sorting subdomains..."
-sort -u $url/amass-final.txt $url/assetfinder-final.txt $url/subfinder-final.txt >> $url/domain-final.txt
+sort -u $url/amass.txt $url/assetfinder.txt $url/subfinder.txt >> $url/domain.txt >> subdomain-final.txt
