@@ -38,4 +38,4 @@ sort -u $url/amass.txt $url/assetfinder.txt $url/subfinder.txt >> $url/final-sd.
 rm $url/amass.txt $url/assetfinder.txt $url/subfinder.txt
 
 echo "[+]HTTPX..."
-httpx -l $url/final-sd.txt -silent -status-code -title -sr $url/live-sd.txt
+httpx -l $url/final-sd.txt -silent -status-code -title >> $url/live-sd.txt
