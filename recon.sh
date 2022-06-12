@@ -1,6 +1,7 @@
 #!/bin/bash
 
 domain=$1
+url=$domain/recon
 a=$url/a.txt
 
 if [ ! -d "$domain" ]; then
@@ -10,8 +11,6 @@ fi
 if [ ! -d "$url" ]; then
 	mkdir $url
 fi
-
-url=$domain/recon
 
 echo "[+]Harvesting subdomains with amass..."
 amass enum -d $domain max-dns-queries 100 >> $a
