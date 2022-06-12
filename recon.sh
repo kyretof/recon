@@ -35,4 +35,9 @@ sort -u $a >> $url/waybackurls.txt
 rm $a
 
 echo "[+]Sorting subdomains..."
-sort -u $url/amass.txt $url/assetfinder.txt $url/subfinder.txt >> $url/domain.txt >> subdomain-final.txt
+sort -u $url/amass.txt $url/assetfinder.txt $url/subfinder.txt >> $url/subdomain-final.txt
+
+rm $url/amass.txt $url/assetfinder.txt $url/subfinder.txt
+
+echo "[+]HTTPX..."
+httpx -silent -status-code -title -tech-detect -list  subdomain-final.txt
