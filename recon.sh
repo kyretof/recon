@@ -1,7 +1,6 @@
 #!/bin/bash
 
 domain=$1
-url=$domain/recon
 a=$url/a.txt
 
 if [ ! -d "$domain" ]; then
