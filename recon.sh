@@ -13,7 +13,7 @@ if [ ! -d "$url" ]; then
 fi
 
 echo "[+]Harvesting subdomains with amass..."
-amass enum -d $domain max-dns-queries 100 -o $a
+amass enum -d $domain max-dns-queries 100 >> $a
 sort -u $a >> $url/amass.txt
 rm $a
 
