@@ -13,7 +13,7 @@ if [ ! -d "$url" ]; then
 fi
 
 echo "[+]Harvesting subdomains with amass..."
-amass enum -d $domain max-dns-queries 100 >> $a
+amass enum -d $domain max-dns-queries 100 -o $a
 sort -u $a >> $url/amass.txt
 rm $a
 
@@ -33,9 +33,10 @@ sort -u $a >> $url/waybackurls.txt
 rm $a
 
 echo "[+]Sorting subdomains..."
-sort -u $url/amass.txt $url/assetfinder.txt $url/subfinder.txt >> $url/subdomain-final.txt
+sort -u $url/amass.txt $url/assetfinder.txt $url/subfinder.txt >> $url/final-sd.txt
 
 rm $url/amass.txt $url/assetfinder.txt $url/subfinder.txt
 
 echo "[+]HTTPX..."
-httpx -silent -status-code -title -tech-detect -list  subdomain-final.txt
+#httpx -silent -status-code -title -tech-detect -list subdomain-final.txt | tee $url/live-sd.txt
+cat $url/final-sd.txt | httpx -silent | tee $url/live-sd.txt
