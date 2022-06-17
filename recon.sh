@@ -38,4 +38,4 @@ sort -u $dir/amass.txt $dir/assetfinder.txt $dir/subfinder.txt > $dir/final-sd.t
 rm $dir/amass.txt $dir/assetfinder.txt $dir/subfinder.txt
 
 echo "[+]HTTPX..."
-httpx -l $dir/final-sd.txt -silent -status-code -title >> $dir/live-sd.txt
+httpx -silent -status-code -title -fc 404 -list $dir/subfinder.txt | anew $dir/live-sd.txt
