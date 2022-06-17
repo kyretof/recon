@@ -1,5 +1,5 @@
 # recon
 A simple recon script writtin in bash
 
-##usage
+## usage
 $./recon.sh target.com
