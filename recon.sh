@@ -13,7 +13,7 @@ if [ ! -d "$dir" ]; then
 fi
 
 echo “[+] Harvesting subdomains with amass...”
-amass enum -d $domain -o $dir/a.txt
+amass enum -d $domain | anew $url/a.txt
 sort -u $dir/a.txt | anew $dir/amass-final.txt
 rm $dir/a.txt
 
