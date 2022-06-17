@@ -35,8 +35,10 @@ rm $dir/a.txt
 echo "[+]Sorting subdomains..."
 sort -u $dir/amass.txt $dir/assetfinder.txt $dir/subfinder.txt > $dir/final-sd.txt
 
-#rm $dir/amass.txt $dir/assetfinder.txt $dir/subfinder.txt
+rm $dir/amass.txt $dir/assetfinder.txt $dir/subfinder.txt
 
 echo "[+]HTTPX..."
 httpx -silent -sc -fc 404 -title -list $dir/final-sd.txt | anew $dir/live-sd.txt
 httpx -silent -sc -fc 404 -title -list $dir/waybackurls.txt | anew $dir/live-waybackurls.txt
+
+rm $dir/waybackurls.txt
