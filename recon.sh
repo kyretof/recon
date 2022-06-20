@@ -43,7 +43,7 @@ sort -u $dir/amass.txt $dir/assetfinder.txt $dir/subfinder.txt $dir/sublist3r.tx
 rm $dir/amass.txt $dir/assetfinder.txt $dir/subfinder.txt $dir/sublist3r.txt
 
 echo "[+]HTTPX..."
-httpx -silent -status-code -title -fc 404 -list $dir/final-sd.txt | anew $dir/live-sd.txt
-httpx -silent -status-code -title -fc 404 -list $dir/waybackurls.txt | anew $dir/live-waybackurls.txt
+httpx -silent -sc -title -fc 404 -l $dir/final-sd.txt | anew $dir/live-sd.txt
+httpx -silent -sc -title -fc 404 -l $dir/waybackurls.txt | anew $dir/live-waybackurls.txt
 
 rm $dir/waybackurls.txt
