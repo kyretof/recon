@@ -27,20 +27,15 @@ subfinder -d $domain | anew $dir/a.txt
 sort -u $dir/a.txt | anew $dir/subfinder.txt
 rm $dir/a.txt
 
-echo "[+] Harvesting subdomains with Sublist3r..."
-python3 Sublist3r/sublist3r.py -d $domain -o $dir/a.txt
-sort -u $dir/a.txt | anew $dir/sublist3r.txt
-rm $dir/a.txt
-
 echo “[+] Harvesting subdomains with waybackurls...”
 echo $domain | waybackurls | anew $dir/a.txt
 sort -u $dir/a.txt | anew $dir/waybackurls.txt
 rm $dir/a.txt
 
 echo "[+]Sorting subdomains..."
-sort -u $dir/amass.txt $dir/assetfinder.txt $dir/subfinder.txt $dir/sublist3r.txt > $dir/final-sd.txt
+sort -u $dir/amass.txt $dir/assetfinder.txt $dir/subfinder.txt > $dir/final-sd.txt
 
-rm $dir/amass.txt $dir/assetfinder.txt $dir/subfinder.txt $dir/sublist3r.txt
+rm $dir/amass.txt $dir/assetfinder.txt $dir/subfinder.txt
 
 echo "[+]HTTPX..."
 httpx -silent -sc -title -fc 404 -l $dir/final-sd.txt | anew $dir/live-sd.txt
