@@ -38,7 +38,7 @@ sort -u $dir/amass.txt $dir/assetfinder.txt $dir/subfinder.txt > $dir/final-sd.t
 rm $dir/amass.txt $dir/assetfinder.txt $dir/subfinder.txt
 
 echo "[+]HTTPX..."
-httpx -silent -sc -title -fc 404 -l $dir/final-sd.txt | anew $dir/live-sd.txt
-httpx -silent -sc -title -fc 404 -l $dir/waybackurls.txt | anew $dir/live-waybackurls.txt
+httpx -silent -sc -title -fc 404 -no-color -l $dir/final-sd.txt | anew $dir/live-sd.txt
+httpx -silent -sc -title -fc 404 -no-color -l $dir/waybackurls.txt | anew $dir/live-waybackurls.txt
 
 rm $dir/waybackurls.txt
