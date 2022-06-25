@@ -1405,6 +1405,7 @@ bamb/
 bamboo/
 banner.swf
 banneradmin/
+bapi/
 base/
 basic_auth.csv
 bb-admin/
